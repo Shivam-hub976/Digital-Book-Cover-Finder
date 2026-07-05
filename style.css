@@ -1,0 +1,250 @@
+/*CSS Variables for Strict Design System*/
+:root {
+    /*Monochromatic Palette*/
+    --color-black: #000000;
+    --color-dark-gray: #333333;
+    --color-mid-gray: #888888;
+    --color-light-gray: #f4f4f4;
+    --color-white: #ffffff;
+    
+    /*TRD Error Requirement*/
+    --color-error-red: #D32F2F; 
+
+    /*Strict 16px/32px Spacing Steps*/
+    --spacing-sm: 16px;
+    --spacing-md: 32px;
+    --spacing-lg: 64px;
+}
+
+/*Base Reset & Typography*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--color-light-gray);
+    color: var(--color-black);
+    line-height: 1.5;
+    padding: var(--spacing-md);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*Main Container*/
+.container {
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--color-white);
+    padding: var(--spacing-md);
+    border: 1px solid var(--color-mid-gray);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/*Typography & Header*/
+header {
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-black);
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: calc(var(--spacing-sm) / 2);
+}
+
+p {
+    color: var(--color-dark-gray);
+    font-size: 16px;
+}
+
+/*Screen reader only utility (Required for 100% Lighthouse Score)*/
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/*Search UI*/
+.search-section {
+    margin-bottom: var(--spacing-md);
+}
+
+.input-group {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--color-mid-gray);
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: var(--color-light-gray);
+    color: var(--color-black);
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--color-black);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+button:hover, button:focus {
+    background-color: var(--color-dark-gray);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/*Unhappy Path: Error States*/
+input.input-error {
+    border-color: var(--color-error-red) !important;
+    background-color: #fffafa; 
+}
+
+.error-message {
+    color: var(--color-error-red);
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+/*Unhappy Path: Loading State*/
+.status-section {
+    text-align: center;
+    min-height: 80px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.spinner {
+    width: var(--spacing-md);
+    height: var(--spacing-md);
+    margin: 0 auto var(--spacing-sm);
+    border: 4px solid var(--color-light-gray);
+    border-top: 4px solid var(--color-black);
+    border-radius: 50%;
+    animation: spin 1s cubic-bezier(0.55, 0.15, 0.45, 0.85) infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/*Results Grid*/
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.book-card {
+    border: 1px solid var(--color-light-gray);
+    border-radius: 6px;
+    padding: var(--spacing-sm);
+    text-align: center;
+    background-color: var(--color-white);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.book-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-mid-gray);
+}
+
+.book-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: var(--spacing-sm);
+    background-color: var(--color-light-gray);
+}
+
+.book-card p {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-black);
+    line-height: 1.3;
+}
+
+/*Mobile Responsive Media Queries*/
+@media (max-width: 600px) {
+    body {
+        padding: var(--spacing-sm);
+    }
+
+    .container {
+        padding: var(--spacing-sm);
+        box-shadow: none;
+        border: none;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .results-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: var(--spacing-sm);
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+}

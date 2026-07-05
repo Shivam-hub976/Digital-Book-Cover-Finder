@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta description ensures 100% Lighthouse SEO Score -->
+    <meta name="description" content="Digital Book Cover Finder for enterprise inventory management.">
+    <title>Digital Book Cover Finder</title>
+
+    <!-- Code-based SVG Favicon (Strict Monochromatic Design) -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='black'/><text y='72' x='27' font-size='65' font-family='sans-serif' font-weight='bold' fill='white'>B</text></svg>">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="container">
+        <header>
+            <h1>Digital Book Cover Finder</h1>
+            <p>Search and retrieve book covers for inventory management.</p>
+        </header>
+
+        <!-- The "Happy Path" Search Interface -->
+        <section class="search-section">
+            <form id="searchForm" novalidate>
+                <div class="input-group">
+                    <!-- sr-only label ensures 100% Lighthouse accessibility score -->
+                    <label for="searchInput" class="sr-only">Enter book title or ISBN</label>
+                    <input type="text" id="searchInput" placeholder="Enter book title or ISBN..."
+                        aria-label="Enter book title or ISBN">
+                    <button type="submit" aria-label="Search for book cover">Search</button>
+                </div>
+                <!-- The "Unhappy Path" Error Message (Hidden by default) -->
+                <p id="errorText" class="error-message hidden" aria-live="polite">Please enter a valid search term.</p>
+            </form>
+        </section>
+
+        <!-- The "Unhappy Path" Bad Connectivity Loading State (Hidden by default) -->
+        <section class="status-section">
+            <div id="loadingIndicator" class="hidden" aria-live="assertive">
+                <div class="spinner"></div>
+                <p>Searching database...</p>
+            </div>
+        </section>
+
+        <!-- The Results Area -->
+        <section id="resultsArea" class="results-grid" aria-live="polite">
+            <!-- Results or the "No data found" empty state will be injected here via JavaScript -->
+        </section>
+    </main>
+    <script src="app.js"></script>
+</body>
+
+</html>
