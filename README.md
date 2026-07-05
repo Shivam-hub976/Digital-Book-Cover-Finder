@@ -1,6 +1,6 @@
 # Digital Book Cover Finder
 
-**Live Demo:** [INSERT YOUR LIVE URL HERE]
+**Live Demo:** https://bookcoverfinder.netlify.app/
 
 ## Project Overview
 
